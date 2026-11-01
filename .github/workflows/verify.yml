@@ -27,3 +27,8 @@ jobs:
           test -f out/contato.html
           test -f out/privacidade.html
           test -f out/icon.svg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nucleo-afetar-static-site
+          path: out/
+          retention-days: 7
