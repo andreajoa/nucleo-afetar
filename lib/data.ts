@@ -2,7 +2,7 @@ export const SITE_NAME = "Programa Núcleo Afetar";
 export const SITE_TAGLINE = "Onde existe vínculo, existem caminhos para aprender.";
 export const INSTAGRAM = "https://www.instagram.com/neuromargarethapoio/";
 export const WHATSAPP = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, "");
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nucleo-afetar.pages.dev";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const regions = ["Santos", "São Vicente", "Praia Grande", "Cubatão"];
 export const services = [
   {id:"neuropsicopedagogia",number:"01",short:"Neuropsicopedagogia",title:"Atendimento neuropsicopedagógico",description:"Compreendemos como a criança aprende, identificamos habilidades e dificuldades e construímos estratégias individualizadas para favorecer sua aprendizagem.",detail:"Observação, avaliação de habilidades relacionadas à aprendizagem e planejamento de intervenções com objetivos possíveis, respeitando a singularidade de cada criança.",icon:"brain"},
