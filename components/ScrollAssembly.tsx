@@ -2,6 +2,7 @@
 import {useEffect,useRef,useState} from "react";
 import Link from "next/link";
 import {ArrowUpRight} from "@/components/Icons";
+import {AsteriskMark} from "@/components/AsteriskMark";
 
 const chapters=[
   {label:"OBSERVAR",title:"Primeiro, a criança explora.",text:"Um brinquedo, uma ideia, uma tentativa. Cada gesto revela possibilidades de aprender."},
@@ -101,7 +102,7 @@ export function ScrollAssembly(){
             <div className="build-block upper-two"/>
             <div className="build-block roof"/>
           </div>
-          <div className="build-success">✳ <span>Conseguimos juntos!</span></div>
+          <div className="build-success"><AsteriskMark/><span>Conseguimos juntos!</span></div>
         </div>
       </div>
     </div>

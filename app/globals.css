@@ -200,3 +200,9 @@ main{overflow-x:clip}
 @media (max-width:570px){
   .manifesto-decoration{font-size:clamp(50px,15vw,68px);line-height:1;top:0;right:4px;color:rgba(255,255,255,.1)}
 }
+
+/* Render the decorative motifs as true vector strokes. No operating-system emoji substitutions. */
+.manifesto-decoration svg{display:block;width:.78em;height:.78em}
+.ticker span svg{display:inline-block;width:18px;height:18px;vertical-align:middle}
+.build-success>svg{display:block;width:36px;height:36px;margin-bottom:5px}
+@media(max-width:570px){.ticker span svg{width:15px;height:15px}.build-success>svg{width:28px;height:28px}}
