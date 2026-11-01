@@ -1,0 +1,30 @@
+name: Verificar website
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependências
+        run: npm install --no-audit --no-fund
+      - name: Validar TypeScript
+        run: npm run check
+      - name: Gerar site estático
+        run: npm run build
+      - name: Conferir páginas essenciais
+        shell: bash
+        run: |
+          test -f out/index.html
+          test -f out/sobre.html
+          test -f out/servicos.html
+          test -f out/equipe.html
+          test -f out/contato.html
+          test -f out/privacidade.html
+          test -f out/icon.svg
