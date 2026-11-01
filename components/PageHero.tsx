@@ -1,0 +1,1 @@
+export function PageHero({eyebrow,title,italic,description}:{eyebrow:string;title:string;italic:string;description:string}){return <section className="page-hero section-pad"><div className="container"><span className="eyebrow">{eyebrow}</span><h1>{title} <em>{italic}</em></h1><p>{description}</p></div></section>}
