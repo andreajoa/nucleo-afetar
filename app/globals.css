@@ -166,3 +166,14 @@
 }
 .build-static{height:auto!important}
 .build-static .build-sticky{position:relative;height:auto;min-height:0;padding:60px 0}
+
+/* Refinement: keep both full faces visible in the reflection strip. */
+.reflection-photo{right:-3%;bottom:0;width:61%;height:100%;object-fit:contain;object-position:right bottom}
+@media(max-width:850px) and (min-width:571px){.reflection-photo{right:-8%;bottom:0;width:64%;height:100%;opacity:.95}}
+@media(max-width:570px){
+  .reflection-band{min-height:365px}
+  .reflection-inner{height:365px;align-items:flex-start}
+  .reflection-copy{width:100%;padding:24px 0 0;max-width:430px}
+  .reflection-copy h2{max-width:420px;font-size:clamp(23px,6.5vw,30px);margin:12px 0}
+  .reflection-photo{width:108%;height:178px;right:-9%;bottom:4px;opacity:1;object-position:center bottom}
+}
