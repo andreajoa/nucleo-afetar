@@ -192,3 +192,11 @@
 main{overflow-x:clip}
 /* Keep policy metadata readable on phones rather than silently removing it. */
 @media(max-width:850px){.legal-aside{display:block;max-width:100%;padding:14px 0 8px;border-top:1px solid var(--border)}.legal-aside p{max-width:590px;margin:8px 0}.legal-aside small{display:block;margin-top:8px}}
+
+/* Social-purpose motif: quiet, legible decoration at tablet and phone sizes. */
+@media (max-width:850px){
+  .manifesto-decoration{font-size:116px;line-height:1;top:-4px;right:0;color:rgba(255,255,255,.065)}
+}
+@media (max-width:570px){
+  .manifesto-decoration{font-size:clamp(50px,15vw,68px);line-height:1;top:0;right:4px;color:rgba(255,255,255,.1)}
+}
