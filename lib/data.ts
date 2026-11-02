@@ -2,7 +2,7 @@ export const SITE_NAME = "Programa Núcleo Afetar";
 export const SITE_TAGLINE = "Onde existe vínculo, existem caminhos para aprender.";
 export const INSTAGRAM = "https://www.instagram.com/neuromargarethapoio/";
 export const WHATSAPP = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, "");
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nucleo-afetar.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.nucleoafetar.com.br";
 export const regions = ["Santos", "São Vicente", "Praia Grande", "Cubatão"];
 export const services = [
   {id:"neuropsicopedagogia",number:"01",short:"Neuropsicopedagogia",title:"Atendimento neuropsicopedagógico",description:"Compreendemos como a criança aprende, identificamos habilidades e dificuldades e construímos estratégias individualizadas para favorecer sua aprendizagem.",detail:"Observação, avaliação de habilidades relacionadas à aprendizagem e planejamento de intervenções com objetivos possíveis, respeitando a singularidade de cada criança.",icon:"brain"},
@@ -18,7 +18,7 @@ export const faqs = [
   {q:"Como saber qual acompanhamento procurar?",a:"A primeira conversa ajuda a compreender a demanda da família e quais possibilidades de apoio educacional fazem sentido. Não é necessário chegar com uma proposta de atendimento definida."},
   {q:"O acompanhamento substitui consultas ou terapias de saúde?",a:"Não. As atividades do programa têm natureza educacional e de apoio à aprendizagem. Quando necessário, a família pode ser orientada a buscar avaliação ou acompanhamento com profissionais de saúde habilitados."},
   {q:"Como funcionam as contribuições?",a:"O Núcleo Afetar tem propósito social. As possibilidades de participação e eventuais contribuições acessíveis para manutenção das atividades são explicadas diretamente à família, conforme as condições de funcionamento do programa."},
-  {q:"Onde o programa atua?",a:"A proposta é atender famílias da Baixada Santista, com foco em Santos, São Vicente, Praia Grande e Cubatão. Informações de local, modalidade e disponibilidade devem ser confirmadas com a equipe."},
+  {q:"Onde o programa atua?",a:"A proposta é atender famílias da Baixada Santista, com foco em Santos, São Vicente, Praia Grande e Cubatão. O atendimento presencial acontece na Rua Domingos José Martins, 501, Vila São Jorge, Santos – SP, mediante agendamento. Famílias da Grande São Paulo podem entrar em contato para consultar as possibilidades de atendimento."},
   {q:"É necessário ter laudo ou diagnóstico?",a:"Não é necessário ter laudo para conversar sobre dificuldades de aprendizagem e buscar orientação educacional. O atendimento será avaliado conforme a demanda e as possibilidades do programa."}
 ];
 export const team = [
