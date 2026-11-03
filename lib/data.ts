@@ -1,6 +1,7 @@
 export const SITE_NAME = "Programa Núcleo Afetar";
 export const SITE_TAGLINE = "Onde existe vínculo, existem caminhos para aprender.";
 export const INSTAGRAM = "https://www.instagram.com/neuromargarethapoio/";
+export const INSTAGRAM_NUCLEO = "https://www.instagram.com/nucleoafetar/";
 export const WHATSAPP = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, "");
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.nucleoafetar.com.br";
 export const regions = ["Santos", "São Vicente", "Praia Grande", "Cubatão"];
