@@ -210,3 +210,12 @@ main{overflow-x:clip}
 .location-section{background:#f0e9dd}.location-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:center}.location-photo{margin:0}.location-photo img{width:100%;height:auto;display:block;border-radius:22px}.location-photo figcaption{font-size:14px;margin-top:12px;color:#625c52}.location-copy p{line-height:1.8;margin:22px 0}.location-copy address{font-style:normal;line-height:1.8;margin:28px 0;padding-left:20px;border-left:3px solid #a75335}.location-actions{display:flex;flex-wrap:wrap;gap:12px}.location-map{width:100%;height:360px;border:0;border-radius:22px;margin-top:40px}.contact-panel textarea{width:100%;min-height:140px;padding:14px;border:1px solid #bdb5a8;border-radius:8px;font:inherit;background:transparent}.form-status{padding:16px;line-height:1.6}.form-status.error{color:#9a2c20}.form-status.success{color:#285c3b}.form-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}@media(max-width:800px){.location-grid{grid-template-columns:1fr}.location-photo{max-width:520px;margin:auto}.location-map{height:300px}.location-actions .button{width:100%}}
 
 .field-hint{margin:-4px 0 12px;font-size:.85rem;opacity:.75}
+
+/* Contato direto, disponível em todas as páginas e acima da área segura do celular. */
+.whatsapp-float{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:calc(24px + env(safe-area-inset-bottom));z-index:45;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 20px;border-radius:999px;background:#146c43;color:#fff;box-shadow:0 5px 22px #163f302b;font-size:14px;font-weight:700;line-height:1.2;border:2px solid #fff;transition:background .2s,transform .2s}
+.whatsapp-float svg{flex-shrink:0}
+.whatsapp-float:hover{background:#105735;transform:translateY(-2px)}
+.whatsapp-float:focus-visible{outline:3px solid var(--wine);outline-offset:4px}
+@media(max-width:600px){.whatsapp-float{right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));width:58px;height:58px;padding:13px}.whatsapp-float span{display:none}}
+@media(prefers-reduced-motion:reduce){.whatsapp-float{transition:none}.whatsapp-float:hover{transform:none}}
+@media print{.whatsapp-float{display:none}}

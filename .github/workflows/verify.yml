@@ -15,20 +15,21 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Validar TypeScript
         run: npm run check
-      - name: Gerar site estático
+      - name: Gerar aplicação Next.js
         run: npm run build
       - name: Conferir páginas essenciais
         shell: bash
         run: |
-          test -f out/index.html
-          test -f out/sobre.html
-          test -f out/servicos.html
-          test -f out/equipe.html
-          test -f out/contato.html
-          test -f out/privacidade.html
-          test -f out/icon.svg
+          test -f .next/BUILD_ID
+          test -f public/icon.svg || test -f app/icon.svg
+          node - <<'NODE'
+          const routes = require('./.next/server/app-paths-manifest.json');
+          for (const route of ['/page', '/sobre/page', '/servicos/page', '/equipe/page', '/contato/page', '/privacidade/page']) {
+            if (!routes[route]) throw new Error(`Página ausente no build: ${route}`);
+          }
+          NODE
       - uses: actions/upload-artifact@v4
         with:
-          name: nucleo-afetar-static-site
-          path: out/
+          name: nucleo-afetar-next-build
+          path: .next/server/
           retention-days: 7
