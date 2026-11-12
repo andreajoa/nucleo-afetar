@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     return [
       {source: "/convite", destination: "/convite.html"},
       {source: "/convite/gerar", destination: "/convite-gerar.html"},
+      {source: "/convite/video", destination: "/convite-video.html"},
+      {source: "/convite-video", destination: "/convite-video.html"},
     ];
   },
 };

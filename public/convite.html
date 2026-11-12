@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Convite · Programa Núcleo Afetar</title>
-<meta name="description" content="Cada mente aprende de um jeito. Sexta-feira, 20 de novembro, às 18h30, em Santos: um encontro de acolhimento sobre TDAH, autismo e as diferentes formas de aprender.">
+<meta name="description" content="Cada mente aprende de um jeito. Sexta-feira, 20 de novembro, às 17h, em Santos: um encontro de acolhimento sobre TDAH, autismo e as diferentes formas de aprender.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#f8f4ed">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Programa Núcleo Afetar">
 <meta property="og:title" content="Cada mente aprende de um jeito. Este convite é para você.">
-<meta property="og:description" content="Sexta, 20 de novembro, 18h30 · Santos/SP. Toque para abrir.">
+<meta property="og:description" content="Sexta, 20 de novembro, 17h · Santos/SP. Toque para abrir.">
 <meta property="og:image" content="https://www.nucleoafetar.com.br/images/convite-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -187,7 +187,7 @@ body.calm .reveal{opacity:1;transform:none}
     <div class="steps">
       <div class="step reveal">
         <div class="num">1</div>
-        <div><h3>Quando</h3><p class="big">Sexta-feira, 20 de novembro</p><p class="small">às 18h30</p>
+        <div><h3>Quando</h3><p class="big">Sexta-feira, 20 de novembro</p><p class="small">às 17h</p>
           <div class="chips"><a class="chip" id="gcal" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Google Agenda</a><a class="chip" id="ics" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>iPhone / Outlook</a></div></div>
       </div>
       <div class="step reveal">
@@ -227,8 +227,8 @@ body.calm .reveal{opacity:1;transform:none}
 
 <script>
 (function(){
-  var EVENT_START = new Date('2026-11-20T18:30:00-03:00');
-  var EVENT_END   = new Date('2026-11-20T20:30:00-03:00');
+  var EVENT_START = new Date('2026-11-20T17:00:00-03:00');
+  var EVENT_END   = new Date('2026-11-20T19:00:00-03:00');
   var TITLE = 'Encontro Programa Núcleo Afetar';
   var PLACE = 'Rua Domingos José Martins, 501 - Vila São Jorge, Santos - SP, 11085-800';
   var WA = '5513997742274';
@@ -244,7 +244,7 @@ body.calm .reveal{opacity:1;transform:none}
     $('hello').innerHTML = 'Olá, <span></span>! Será uma alegria <em>ter você conosco.</em>'; $('hello').querySelector('span').textContent = first;
     document.title = first + ', este convite é para você · Núcleo Afetar';
   }
-  var msg = (name ? 'Olá! Aqui é ' + name + '. ' : 'Olá! ') + 'Confirmo minha presença no encontro do Programa Núcleo Afetar, sexta-feira, 20/11, às 18h30.';
+  var msg = (name ? 'Olá! Aqui é ' + name + '. ' : 'Olá! ') + 'Confirmo minha presença no encontro do Programa Núcleo Afetar, sexta-feira, 20/11, às 17h.';
   $('rsvp').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
 
   /* agenda */
@@ -253,7 +253,7 @@ body.calm .reveal{opacity:1;transform:none}
   $('gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(TITLE) + '&dates=' + fmt(EVENT_START) + '/' + fmt(EVENT_END) + '&details=' + encodeURIComponent(details) + '&location=' + encodeURIComponent(PLACE);
   $('ics').addEventListener('click', function(e){
     e.preventDefault();
-    var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Nucleo Afetar//Convite//PT','BEGIN:VEVENT','UID:encontro-20261120@nucleoafetar.com.br','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(EVENT_START),'DTEND:'+fmt(EVENT_END),'SUMMARY:'+TITLE,'LOCATION:'+PLACE.replace(/,/g,'\\,'),'DESCRIPTION:'+details.replace(/,/g,'\\,'),'BEGIN:VALARM','TRIGGER:-PT3H','ACTION:DISPLAY','DESCRIPTION:Encontro Núcleo Afetar hoje às 18h30','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Nucleo Afetar//Convite//PT','BEGIN:VEVENT','UID:encontro-20261120@nucleoafetar.com.br','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(EVENT_START),'DTEND:'+fmt(EVENT_END),'SUMMARY:'+TITLE,'LOCATION:'+PLACE.replace(/,/g,'\\,'),'DESCRIPTION:'+details.replace(/,/g,'\\,'),'BEGIN:VALARM','TRIGGER:-PT3H','ACTION:DISPLAY','DESCRIPTION:Encontro Núcleo Afetar hoje às 17h','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
     var url = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
     var a = document.createElement('a'); a.href = url; a.download = 'encontro-nucleo-afetar.ics'; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
