@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerar convites · Núcleo Afetar</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f8f1e8;--ivory:#fffaf3;--wine:#682b3c;--burgundy:#7d2a3e;--teal:#38697b;--gold:#b99a6e;--ink:#2d2a2b;--muted:#6d6466;--line:#e6d9c8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:'Montserrat',Arial,sans-serif;font-size:15px;padding:28px 16px 60px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:54px;color:var(--burgundy);line-height:1}
+.lead{color:var(--muted);margin-top:8px;line-height:1.6}
+.box{background:var(--ivory);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:22px}
+label{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--wine);margin-bottom:8px}
+textarea{width:100%;min-height:160px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;background:#fff;resize:vertical;line-height:1.6}
+textarea:focus{outline:2px solid var(--teal);border-color:transparent}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button,.btn{font:inherit;font-weight:600;font-size:13px;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.primary{background:var(--wine);color:#fff}
+.ghost{background:transparent;color:var(--wine);border:1px solid var(--wine)}
+.list{margin-top:18px;display:grid;gap:10px}
+.item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px}
+.item .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.item strong{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--burgundy)}
+.item code{font-size:12px;color:var(--teal);word-break:break-all}
+.item .btns{display:flex;gap:8px;flex-wrap:wrap}
+.wa{background:#1f8f4e;color:#fff}
+.small{padding:9px 14px;font-size:12px}
+.sent{opacity:.55}
+.sent strong::after{content:" · enviado";font-family:'Montserrat';font-size:11px;color:var(--muted)}
+.empty{color:var(--muted);font-size:13px;text-align:center;padding:18px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Gerar convites</h1>
+  <p class="lead">Cole um nome por linha. Para cada pessoa sai um link próprio do convite. Se quiser abrir a conversa já com a pessoa certa no WhatsApp, coloque o telefone depois do nome, separado por vírgula (ex.: <em>Maria Souza, 13 99999-0000</em>).</p>
+
+  <div class="box">
+    <label for="names">Convidados</label>
+    <textarea id="names" placeholder="Maria Souza, 13 99999-0000&#10;João Pereira&#10;Família Andrade"></textarea>
+    <label for="tpl" style="margin-top:16px">Mensagem do WhatsApp</label>
+    <textarea id="tpl" style="min-height:110px">Olá, {nome}! 💌
+Preparamos um convite especial para você, do Programa Núcleo Afetar.
+Toque no link para abrir:
+{link}</textarea>
+    <p class="hint">{nome} vira o primeiro nome da pessoa; {link}, o link do convite dela.</p>
+    <div class="actions">
+      <button class="primary" id="gen" type="button">Gerar links</button>
+      <button class="ghost" id="copyAll" type="button">Copiar todos os links</button>
+      <a class="btn ghost" href="/convite" target="_blank" rel="noopener">Ver convite sem nome</a>
+    </div>
+  </div>
+
+  <div class="list" id="list"><p class="empty">Os convites aparecem aqui.</p></div>
+</div>
+<div class="toast" id="toast">Copiado</div>
+
+<script>
+(function(){
+  var BASE = 'https://www.nucleoafetar.com.br/convite';
+  var $ = function(id){ return document.getElementById(id); };
+  var store = { get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
+
+  var saved = store.get('afetar-convidados'); if (saved) $('names').value = saved;
+  var savedTpl = store.get('afetar-msg'); if (savedTpl) $('tpl').value = savedTpl;
+  var sent = {}; try{ sent = JSON.parse(store.get('afetar-enviados') || '{}'); }catch(e){}
+
+  function toast(t){ var el=$('toast'); el.textContent=t; el.classList.add('on'); setTimeout(function(){ el.classList.remove('on'); }, 1400); }
+  function copy(t){ (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('Copiado'); }, function(){ prompt('Copie:', t); }); }
+  function phone(p){ var d=(p||'').replace(/\D/g,''); if(!d) return ''; if(d.length<=11) d='55'+d; return d; }
+
+  var rows = [];
+  function gen(){
+    store.set('afetar-convidados', $('names').value);
+    store.set('afetar-msg', $('tpl').value);
+    rows = $('names').value.split('\n').map(function(l){ return l.trim(); }).filter(Boolean).map(function(l){
+      var parts = l.split(','); var name = parts[0].trim(); var tel = phone(parts.slice(1).join(','));
+      var link = BASE + '?para=' + encodeURIComponent(name);
+      var first = name.split(/\s+/)[0];
+      var text = $('tpl').value.replace(/\{nome\}/g, first).replace(/\{link\}/g, link);
+      return {name:name, tel:tel, link:link, wa:'https://wa.me/' + tel + '?text=' + encodeURIComponent(text)};
+    });
+    var list = $('list'); list.innerHTML = '';
+    if (!rows.length){ list.innerHTML = '<p class="empty">Os convites aparecem aqui.</p>'; return; }
+    rows.forEach(function(r){
+      var el = document.createElement('div'); el.className = 'item' + (sent[r.name] ? ' sent' : '');
+      var top = document.createElement('div'); top.className='top';
+      var s = document.createElement('strong'); s.textContent = r.name; top.appendChild(s);
+      var c = document.createElement('code'); c.textContent = r.link;
+      var b = document.createElement('div'); b.className='btns';
+      var wa = document.createElement('a'); wa.className='btn wa small'; wa.href=r.wa; wa.target='_blank'; wa.rel='noopener'; wa.textContent = r.tel ? 'Enviar no WhatsApp' : 'Enviar no WhatsApp (escolher contato)';
+      wa.addEventListener('click', function(){ sent[r.name]=1; store.set('afetar-enviados', JSON.stringify(sent)); el.classList.add('sent'); });
+      var cp = document.createElement('button'); cp.className='ghost small'; cp.type='button'; cp.textContent='Copiar link'; cp.addEventListener('click', function(){ copy(r.link); });
+      var op = document.createElement('a'); op.className='btn ghost small'; op.href=r.link; op.target='_blank'; op.rel='noopener'; op.textContent='Ver';
+      b.appendChild(wa); b.appendChild(cp); b.appendChild(op);
+      el.appendChild(top); el.appendChild(c); el.appendChild(b); list.appendChild(el);
+    });
+  }
+  $('gen').addEventListener('click', gen);
+  $('copyAll').addEventListener('click', function(){ if(!rows.length) gen(); copy(rows.map(function(r){ return r.name + ': ' + r.link; }).join('\n')); });
+  if (saved) gen();
+})();
+</script>
+</body>
+</html>
