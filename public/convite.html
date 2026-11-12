@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Convite · Programa Núcleo Afetar</title>
+<meta name="description" content="Cada mente aprende de um jeito. Sexta-feira, 20 de novembro, às 17h, em Santos: um encontro de acolhimento sobre TDAH, autismo e as diferentes formas de aprender.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f8f4ed">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Programa Núcleo Afetar">
+<meta property="og:title" content="Cada mente aprende de um jeito. Este convite é para você.">
+<meta property="og:description" content="Sexta, 20 de novembro, 17h · Santos/SP. Toque para abrir.">
+<meta property="og:image" content="https://www.nucleoafetar.com.br/images/convite-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://www.nucleoafetar.com.br/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f8f4ed;--ivory:#fffcf7;--sand:#eee5d9;
+  --wine:#682b3c;--burgundy:#783247;--teal:#38697b;--gold:#b99a6e;--rose:#e2b7a8;--navy:#2c4a5e;
+  --ink:#292b29;--muted:#696a65;--line:#dfd5c6;
+  --serif:'Fraunces',Georgia,serif;--sans:'Nunito',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+/* modo calmo */
+.calm-toggle{position:fixed;top:14px;right:14px;z-index:20;display:flex;align-items:center;gap:8px;background:rgba(255,252,247,.92);border:1px solid var(--line);border-radius:999px;padding:8px 14px 8px 10px;font-size:13px;font-weight:700;color:var(--navy);backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(41,43,41,.08)}
+.calm-toggle .sw{width:34px;height:20px;border-radius:999px;background:#d8cfc2;position:relative;transition:background .25s}
+.calm-toggle .sw::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .25s}
+body.calm .calm-toggle .sw{background:var(--teal)}
+body.calm .calm-toggle .sw::after{transform:translateX(14px)}
+body.calm *,body.calm *::before,body.calm *::after{animation:none!important;transition:none!important}
+
+/* ===== ABERTURA ===== */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:84px 16px 40px;overflow:hidden}
+.field{position:absolute;inset:0;pointer-events:none}
+.dot{position:absolute;left:0;top:0;border-radius:50%;transition:transform 1.6s cubic-bezier(.2,.8,.2,1),opacity .6s;will-change:transform}
+.dot i{display:block;width:100%;height:100%;border-radius:50%;background:currentColor;animation:wander var(--d,6s) ease-in-out infinite alternate}
+.dot.star i{background:none;border:2px solid currentColor}
+@keyframes wander{0%{transform:translate(0,0)}100%{transform:translate(var(--x,8px),var(--y,-10px))}}
+.gathered .dot i{animation:breathe 3.2s ease-in-out infinite;animation-delay:var(--k,0s)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+.kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--teal);position:relative}
+.h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,10.5vw,64px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-top:14px;max-width:640px;position:relative}
+.h1 em{font-style:italic;color:var(--burgundy)}
+.for{margin-top:18px;font-size:19px;color:var(--muted);position:relative;font-weight:600}
+.for b{color:var(--wine);font-weight:800}
+.spacer{height:min(42vw,230px);width:100%;position:relative}
+.cta{position:relative;margin-top:6px;display:inline-flex;align-items:center;gap:12px;background:var(--wine);color:#fff;font-weight:800;font-size:16px;padding:17px 28px;border-radius:999px;box-shadow:0 12px 26px rgba(104,43,60,.28);transition:transform .2s,background .2s}
+.cta:hover{transform:translateY(-2px);background:#572234}
+.cta svg{width:20px;height:20px}
+.cta-hint{position:relative;margin-top:12px;font-size:13.5px;color:var(--muted);font-weight:600;min-height:1.4em}
+.after{max-height:0;opacity:0;overflow:hidden;transition:opacity .8s .9s}
+.gathered .after{max-height:none;opacity:1}
+.gathered .cta{display:none}
+.together{position:relative;font-family:var(--serif);font-style:italic;font-size:clamp(24px,6.6vw,32px);color:var(--teal);margin-top:4px}
+.scroll{display:inline-flex;flex-direction:column;align-items:center;gap:4px;margin-top:18px;font-size:13px;font-weight:700;color:var(--wine)}
+.scroll svg{width:22px;height:22px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+
+/* ===== CONTEÚDO ===== */
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+section.block{padding:56px 0}
+.label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--teal);display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px}
+.h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,8vw,42px);line-height:1.12;letter-spacing:-.015em;margin-top:12px}
+.h2 em{font-style:italic;color:var(--burgundy)}
+.text{margin-top:16px;color:#3c3d3a;font-size:18.5px}
+.text strong{color:var(--wine)}
+
+.minds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.mind{background:var(--ivory);border:1px solid var(--line);border-radius:20px;padding:18px 16px 16px;position:relative;overflow:hidden}
+.mind .sym{width:44px;height:44px;display:block}
+.mind h3{font-family:var(--serif);font-weight:650;font-size:20px;line-height:1.2;margin-top:12px;color:var(--ink)}
+.mind p{font-size:15px;line-height:1.5;color:var(--muted);margin-top:6px}
+.mind.wide{grid-column:1/-1;display:flex;gap:16px;align-items:center;background:linear-gradient(120deg,#f6e4dc,#f3ebe0)}
+.mind.wide h3{margin-top:0}
+
+.steps{margin-top:26px;display:grid;gap:14px;counter-reset:s}
+.step{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start;background:var(--ivory);border:1px solid var(--line);border-radius:22px;padding:18px}
+.num{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:650;font-size:26px}
+.step:nth-child(1) .num{background:var(--burgundy)}
+.step:nth-child(2) .num{background:var(--teal)}
+.step:nth-child(3) .num{background:var(--gold)}
+.step h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.step .big{font-family:var(--serif);font-weight:650;font-size:23px;line-height:1.2;color:var(--ink);margin-top:4px}
+.step .small{font-size:15.5px;color:var(--muted);margin-top:2px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;color:var(--teal);background:#e7efee;border-radius:999px;padding:8px 13px}
+.chip svg{width:15px;height:15px}
+
+.count{display:flex;gap:10px;margin-top:22px}
+.count div{flex:1;text-align:center;background:var(--ivory);border:1px solid var(--line);border-radius:18px;padding:14px 6px}
+.count b{display:block;font-family:var(--serif);font-weight:650;font-size:34px;line-height:1;color:var(--burgundy)}
+.count span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-top:6px}
+
+.rsvp{display:flex;align-items:center;gap:14px;margin-top:22px;background:var(--wine);color:#fff;border-radius:22px;padding:20px;box-shadow:0 14px 30px rgba(104,43,60,.26);transition:transform .2s,background .2s}
+.rsvp:hover{transform:translateY(-2px);background:#572234}
+.rsvp .wa{flex:0 0 48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.rsvp .wa svg{width:26px;height:26px}
+.rsvp span{display:flex;flex-direction:column;line-height:1.3}
+.rsvp em{font-style:normal;font-size:14px;opacity:.88;font-weight:600}
+.rsvp strong{font-size:20px;font-weight:800;letter-spacing:.01em}
+.rsvp .arr{margin-left:auto;width:22px;height:22px;flex:0 0 auto}
+.note{font-size:14.5px;color:var(--muted);text-align:center;margin-top:12px;font-weight:600}
+
+.sign{text-align:center;padding:30px 0 56px}
+.sign .inf{width:96px;margin:0 auto;display:block}
+.sign p{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--muted);margin-top:12px}
+.sign h4{font-family:var(--serif);font-weight:650;font-size:clamp(26px,7.4vw,34px);color:var(--burgundy);margin-top:2px;letter-spacing:-.01em}
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:30px}
+.brand img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+.brand div{text-align:left;line-height:1.15}
+.brand small{display:block;font-size:10.5px;letter-spacing:.24em;font-weight:800;color:var(--navy)}
+.brand strong{font-family:var(--serif);font-weight:650;font-size:20px;color:var(--wine)}
+.brand-tag{font-size:12.5px;color:var(--muted);margin-top:10px;font-weight:600}
+.site{display:inline-block;margin-top:8px;font-size:14px;font-weight:800;color:var(--teal)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+body.calm .reveal{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){.dot i,.scroll svg{animation:none!important}.reveal{opacity:1;transform:none}}
+@media (max-width:370px){.minds{grid-template-columns:1fr}.step{grid-template-columns:46px 1fr;padding:16px}.num{width:46px;height:46px;font-size:22px}}
+</style>
+</head>
+<body>
+<button class="calm-toggle" id="calm" type="button" aria-pressed="false" title="Desliga as animações para uma leitura mais tranquila">
+  <span class="sw" aria-hidden="true"></span>Modo calmo
+</button>
+
+<header class="hero" id="hero">
+  <div class="field" id="field" aria-hidden="true"></div>
+  <p class="kicker">Programa Núcleo Afetar convida</p>
+  <h1 class="h1">Cada mente aprende <em>de um jeito.</em></h1>
+  <p class="for" id="forLine">E este convite é para <b>você</b>.</p>
+  <div class="spacer"></div>
+  <button class="cta" id="gather" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 12c-2-3-4.5-4.5-7-4.5a4.5 4.5 0 0 0 0 9c2.5 0 5-1.5 7-4.5Zm0 0c2 3 4.5 4.5 7 4.5a4.5 4.5 0 0 0 0-9c-2.5 0-5 1.5-7 4.5Z"/></svg>
+    Toque para nos encontrar
+  </button>
+  <p class="cta-hint" id="hint">Cada ponto tem o seu ritmo.</p>
+  <div class="after">
+    <p class="together">Diferentes. E juntos.</p>
+    <a class="scroll" href="#convite">Abrir o convite
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></a>
+  </div>
+</header>
+
+<main class="wrap" id="convite">
+  <section class="block">
+    <p class="label reveal">O convite</p>
+    <h2 class="h2 reveal" id="hello">Olá! Será uma alegria <em>ter você conosco.</em></h2>
+    <p class="text reveal">É com muito carinho que convidamos você para o nosso <strong>evento especial</strong>: um momento de acolhimento, troca e informação sobre o trabalho do <strong>Programa Núcleo Afetar</strong> com crianças e famílias que vivem o TDAH, o autismo e outras formas de aprender.</p>
+    <p class="text reveal">Vamos compartilhar tudo o que preparamos com muito amor e propósito para apoiar cada família em sua jornada.</p>
+
+    <div class="minds">
+      <div class="mind reveal">
+        <svg class="sym" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" fill="#f3e3dd"/><path d="M13 27l5-9 4 6 4-8 5 11" stroke="#783247" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="13" r="2.4" fill="#b99a6e"/></svg>
+        <h3>TDAH</h3><p>Energia, curiosidade e atenção que pedem caminhos próprios.</p>
+      </div>
+      <div class="mind reveal">
+        <svg class="sym" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" fill="#e3edec"/><path d="M22 22c-2.6-3.6-5-5.2-7.6-5.2a5.2 5.2 0 0 0 0 10.4c2.6 0 5-1.6 7.6-5.2Zm0 0c2.6 3.6 5 5.2 7.6 5.2a5.2 5.2 0 0 0 0-10.4c-2.6 0-5 1.6-7.6 5.2Z" stroke="#38697b" stroke-width="2.4"/></svg>
+        <h3>Autismo</h3><p>Outro jeito de sentir, perceber e se comunicar com o mundo.</p>
+      </div>
+      <div class="mind wide reveal">
+        <svg class="sym" viewBox="0 0 44 44" fill="none" style="flex:0 0 44px"><circle cx="22" cy="22" r="20" fill="#fffcf7"/><path d="M22 31s-8-5-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 6-8 11-8 11Z" fill="#783247"/></svg>
+        <div><h3>Afeto e vínculo</h3><p>A base de toda aprendizagem, para cada criança e cada família.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:8px">
+    <p class="label reveal">Em 3 passos</p>
+    <h2 class="h2 reveal">Tudo o que você <em>precisa saber.</em></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">1</div>
+        <div><h3>Quando</h3><p class="big">Sexta-feira, 20 de novembro</p><p class="small">às 17h</p>
+          <div class="chips"><a class="chip" id="gcal" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Google Agenda</a><a class="chip" id="ics" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>iPhone / Outlook</a></div></div>
+      </div>
+      <div class="step reveal">
+        <div class="num">2</div>
+        <div><h3>Onde</h3><p class="big">Rua Domingos José Martins, 501</p><p class="small">Vila São Jorge · Santos/SP</p>
+          <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Rua+Domingos+Jos%C3%A9+Martins%2C+501%2C+Vila+S%C3%A3o+Jorge%2C+Santos+-+SP%2C+11085-800" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Abrir no mapa</a></div></div>
+      </div>
+      <div class="step reveal">
+        <div class="num">3</div>
+        <div><h3>Confirme</h3><p class="big">Pelo WhatsApp</p><p class="small">Um toque no botão abaixo, a mensagem já vai pronta.</p></div>
+      </div>
+    </div>
+
+    <div class="count reveal" id="count" aria-label="Contagem regressiva">
+      <div><b id="cd">–</b><span>dias</span></div>
+      <div><b id="ch">–</b><span>horas</span></div>
+      <div><b id="cm">–</b><span>min</span></div>
+    </div>
+
+    <a class="rsvp reveal" id="rsvp" href="https://wa.me/5513997742274" target="_blank" rel="noopener">
+      <span class="wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.85 11.85 0 0 0 12.05 0C5.45 0 .1 5.35.1 11.95c0 2.1.55 4.16 1.6 5.97L0 24l6.24-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.6 0 11.95-5.35 11.95-11.95 0-3.19-1.24-6.19-3.48-8.41ZM12.05 21.8h-.01a9.85 9.85 0 0 1-5.03-1.38l-.36-.21-3.7.97.99-3.6-.24-.37a9.83 9.83 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.88-9.88 2.64 0 5.12 1.03 6.98 2.9a9.8 9.8 0 0 1 2.89 6.99c0 5.45-4.44 9.84-9.89 9.84Zm5.42-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg></span>
+      <span><em>Confirme sua presença</em><strong>(13) 99774-2274</strong></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="note reveal">Sua presença é muito importante para nós!</p>
+  </section>
+
+  <footer class="sign reveal">
+    <svg class="inf" viewBox="0 0 96 40" fill="none"><path d="M48 20C41 9 33 5 25 5a15 15 0 0 0 0 30c8 0 16-4 23-15Zm0 0c7 11 15 15 23 15a15 15 0 0 0 0-30c-8 0-16 4-23 15Z" stroke="#38697b" stroke-width="3.2"/><path d="M48 14.5c-1.8-3.6-6.4-1-3.6 2.6L48 21l3.6-3.9c2.8-3.6-1.8-6.2-3.6-2.6Z" fill="#783247"/></svg>
+    <p>Com carinho,</p>
+    <h4>Margareth · Karen · Júlia</h4>
+    <div class="brand"><img src="https://www.nucleoafetar.com.br/images/logo-original-versao-3.webp" alt=""><div><small>PROGRAMA</small><strong>Núcleo Afetar</strong></div></div>
+    <p class="brand-tag" style="font-family:var(--sans);font-style:normal;font-size:12.5px">Afeto e vínculo como base da aprendizagem · Santos | Baixada Santista</p>
+    <a class="site" href="https://www.nucleoafetar.com.br" target="_blank" rel="noopener">nucleoafetar.com.br</a>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var EVENT_START = new Date('2026-11-20T17:00:00-03:00');
+  var EVENT_END   = new Date('2026-11-20T19:00:00-03:00');
+  var TITLE = 'Encontro Programa Núcleo Afetar';
+  var PLACE = 'Rua Domingos José Martins, 501 - Vila São Jorge, Santos - SP, 11085-800';
+  var WA = '5513997742274';
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* nome: ?para=Maria (também ?nome= ou ?n=) */
+  var q = new URLSearchParams(location.search);
+  var raw = (q.get('para') || q.get('nome') || q.get('n') || '').replace(/[<>{}]/g,'').replace(/\s+/g,' ').trim().slice(0,40);
+  var name = raw ? raw.split(' ').map(function(w){ return /^(da|de|do|das|dos|e)$/i.test(w) ? w.toLowerCase() : w.charAt(0).toUpperCase()+w.slice(1); }).join(' ') : '';
+  var first = name ? name.split(' ')[0] : '';
+  if (first){
+    $('forLine').innerHTML = 'E este convite é para <b></b>.'; $('forLine').querySelector('b').textContent = name;
+    $('hello').innerHTML = 'Olá, <span></span>! Será uma alegria <em>ter você conosco.</em>'; $('hello').querySelector('span').textContent = first;
+    document.title = first + ', este convite é para você · Núcleo Afetar';
+  }
+  var msg = (name ? 'Olá! Aqui é ' + name + '. ' : 'Olá! ') + 'Confirmo minha presença no encontro do Programa Núcleo Afetar, sexta-feira, 20/11, às 17h.';
+  $('rsvp').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+
+  /* agenda */
+  function fmt(d){ return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
+  var details = 'Acolhimento, troca e informação sobre o trabalho do Programa Núcleo Afetar. Confirmação pelo WhatsApp (13) 99774-2274.';
+  $('gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(TITLE) + '&dates=' + fmt(EVENT_START) + '/' + fmt(EVENT_END) + '&details=' + encodeURIComponent(details) + '&location=' + encodeURIComponent(PLACE);
+  $('ics').addEventListener('click', function(e){
+    e.preventDefault();
+    var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Nucleo Afetar//Convite//PT','BEGIN:VEVENT','UID:encontro-20261120@nucleoafetar.com.br','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(EVENT_START),'DTEND:'+fmt(EVENT_END),'SUMMARY:'+TITLE,'LOCATION:'+PLACE.replace(/,/g,'\\,'),'DESCRIPTION:'+details.replace(/,/g,'\\,'),'BEGIN:VALARM','TRIGGER:-PT3H','ACTION:DISPLAY','DESCRIPTION:Encontro Núcleo Afetar hoje às 17h','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var url = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
+    var a = document.createElement('a'); a.href = url; a.download = 'encontro-nucleo-afetar.ics'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  });
+
+  /* contagem */
+  function tick(){
+    var diff = EVENT_START - new Date();
+    if (diff <= 0){ $('count').innerHTML = '<div style="flex:1"><b style="font-size:24px">' + (new Date() < EVENT_END ? 'É hoje! Esperamos você' : 'Obrigada pela presença!') + '</b></div>'; return; }
+    var m = Math.floor(diff/60000);
+    $('cd').textContent = Math.floor(m/1440); $('ch').textContent = Math.floor(m%1440/60); $('cm').textContent = m%60;
+  }
+  tick(); setInterval(tick, 30000);
+
+  /* modo calmo (lembra a escolha; segue a preferência do aparelho) */
+  function setCalm(on){ document.body.classList.toggle('calm', on); $('calm').setAttribute('aria-pressed', on); try{ localStorage.setItem('afetar-calmo', on ? '1' : '0'); }catch(e){} }
+  var pref = null; try{ pref = localStorage.getItem('afetar-calmo'); }catch(e){}
+  setCalm(pref ? pref === '1' : matchMedia('(prefers-reduced-motion: reduce)').matches);
+  $('calm').addEventListener('click', function(){ setCalm(!document.body.classList.contains('calm')); });
+
+  /* pontos: espalhados, cada um no seu ritmo -> juntos formam o infinito */
+  var COLORS = ['#783247','#38697b','#b99a6e','#e2b7a8','#2c4a5e','#682b3c'];
+  var hero = $('hero'), field = $('field'), dots = [], N = 46;
+  for (var i=0;i<N;i++){
+    var d = document.createElement('span'); d.className = 'dot' + (i % 7 === 0 ? ' star' : '');
+    var s = 6 + Math.round(Math.random()*9); d.style.width = d.style.height = s + 'px';
+    d.style.color = COLORS[i % COLORS.length];
+    var inner = document.createElement('i');
+    inner.style.setProperty('--d', (3.5 + Math.random()*5).toFixed(2) + 's');
+    inner.style.setProperty('--x', (Math.random()*30-15).toFixed(0) + 'px');
+    inner.style.setProperty('--y', (Math.random()*30-15).toFixed(0) + 'px');
+    inner.style.animationDelay = (-Math.random()*6).toFixed(2) + 's';
+    d.appendChild(inner); field.appendChild(d);
+    dots.push({el:d, s:s, rx:Math.random(), ry:Math.random()});
+  }
+  var gathered = false;
+  function layout(){
+    var w = hero.clientWidth, h = hero.clientHeight;
+    var sp = hero.querySelector('.spacer').getBoundingClientRect(), hr = hero.getBoundingClientRect();
+    var cx = w/2, cy = sp.top - hr.top + sp.height/2, a = Math.min(w*0.42, 250);
+    var blocked = ['.kicker','.h1','.for','.cta','.cta-hint'].map(function(sel){
+      var r = hero.querySelector(sel).getBoundingClientRect();
+      return {l:r.left - hr.left - 14, r:r.right - hr.left + 14, t:r.top - hr.top - 14, b:r.bottom - hr.top + 14};
+    });
+    dots.forEach(function(p, i){
+      var x, y;
+      if (gathered){
+        var t = (i / N) * Math.PI * 2, den = 1 + Math.sin(t)*Math.sin(t);
+        x = cx + a * Math.cos(t) / den; y = cy + a * Math.sin(t) * Math.cos(t) / den;
+        p.el.firstChild.style.setProperty('--k', (i/N*3.2).toFixed(2) + 's');
+      } else {
+        /* espalhados, mas sem cobrir título, nome e botão */
+        var tries = 0;
+        do {
+          x = 16 + Math.random() * (w - 32); y = 64 + Math.random() * (h - 100);
+          tries++;
+        } while (tries < 40 && blocked.some(function(r){ return x > r.l && x < r.r && y > r.t && y < r.b; }));
+      }
+      p.el.style.transform = 'translate(' + (x - p.s/2).toFixed(1) + 'px,' + (y - p.s/2).toFixed(1) + 'px)';
+      p.el.style.transitionDelay = gathered ? (i*18) + 'ms' : '0ms';
+    });
+  }
+  layout();
+  addEventListener('resize', layout);
+  $('gather').addEventListener('click', function(){
+    gathered = true; hero.classList.add('gathered'); $('hint').textContent = ''; layout();
+  });
+  if (q.has('aberto')){ gathered = true; hero.classList.add('gathered'); $('hint').textContent = ''; layout(); }
+
+  /* revelar ao rolar */
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.15}) : null;
+  document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
+})();
+</script>
+</body>
+</html>

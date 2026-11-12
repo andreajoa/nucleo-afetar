@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite · Programa Núcleo Afetar</title>
+<meta name="description" content="Convite do Programa Núcleo Afetar: sexta-feira, 20 de novembro, às 17h, na Rua Domingos José Martins, 501 – Vila São Jorge, Santos/SP.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Programa Núcleo Afetar">
+<meta property="og:title" content="Você recebeu um convite">
+<meta property="og:description" content="Sexta, 20 de novembro, 17h · Santos/SP. Toque para abrir.">
+<meta property="og:url" content="https://www.nucleoafetar.com.br/convite/video">
+<meta property="og:image" content="https://www.nucleoafetar.com.br/images/convite-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5e2536">
+<link rel="canonical" href="https://www.nucleoafetar.com.br/convite/video">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="/videos/convite-vertical.jpg" media="(orientation: portrait)">
+<link rel="preload" as="image" href="/videos/convite-horizontal.jpg" media="(orientation: landscape)">
+<style>
+  :root{--cream:#fbf5ec;--wine:#5e2536}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:var(--cream);overflow:hidden;-webkit-tap-highlight-color:transparent}
+  body{transition:background-color .5s ease;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  body.wine{background:var(--wine)}
+  .stage{position:fixed;inset:0;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center}
+  video{display:block;width:100%;height:100%;object-fit:contain;background:transparent}
+  .ui{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:2}
+  .ui button{display:flex;align-items:center;gap:8px;height:46px;padding:0 18px;border:0;border-radius:999px;background:rgba(104,43,60,.92);color:#fff;font:700 15px/1 inherit;font-family:inherit;cursor:pointer;box-shadow:0 8px 22px rgba(40,10,18,.3)}
+  .ui button svg{width:20px;height:20px;flex:0 0 auto}
+  .ui button[hidden]{display:none}
+  .ui button:focus-visible{outline:3px solid #e3c99c;outline-offset:2px}
+  .play{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;border:0;background:transparent;cursor:pointer}
+  .play span{display:flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;background:rgba(251,245,236,.96);color:#682b3c;font:800 20px/1 system-ui,sans-serif;box-shadow:0 18px 40px rgba(40,10,18,.35)}
+  .play[hidden]{display:none}
+  @media (prefers-reduced-motion: reduce){body{transition:none}}
+</style>
+</head>
+<body>
+<main class="stage">
+  <video id="v" playsinline webkit-playsinline muted autoplay preload="auto" aria-label="Convite em vídeo do Programa Núcleo Afetar: sexta-feira, 20 de novembro, às 17h, Rua Domingos José Martins, 501, Vila São Jorge, Santos. Confirmação pelo WhatsApp (13) 99774-2274."></video>
+</main>
+<button class="play" id="play" hidden aria-label="Abrir o convite"><span>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#682b3c" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Abrir o convite</span></button>
+<div class="ui">
+  <button id="sound" type="button" aria-label="Ativar som">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+    <span>Ativar som</span></button>
+  <button id="again" type="button" hidden aria-label="Ver de novo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+    <span>Ver de novo</span></button>
+</div>
+<noscript><p style="padding:24px;font:18px system-ui">Convite: sexta-feira, 20 de novembro, às 17h · Rua Domingos José Martins, 501 – Vila São Jorge, Santos/SP · Confirme pelo WhatsApp (13) 99774-2274.</p></noscript>
+<script>
+(function(){
+  var v = document.getElementById('v'), body = document.body;
+  var sound = document.getElementById('sound'), again = document.getElementById('again'), play = document.getElementById('play');
+  /* Cada formato tem a própria versão: vertical para celular/tablet em pé, horizontal para desktop/tablet deitado. */
+  var SRC = {
+    portrait:  {mp4:'/videos/convite-vertical.mp4',   poster:'/videos/convite-vertical.jpg',   wine:[1.5, 7.0]},
+    landscape: {mp4:'/videos/convite-horizontal.mp4', poster:'/videos/convite-horizontal.jpg', wine:[1.3, 6.8]}
+  };
+  var mq = window.matchMedia('(orientation: portrait)'), cur = null;
+
+  function pick(){
+    var key = mq.matches ? 'portrait' : 'landscape';
+    if (key === cur) return;
+    var t = v.currentTime || 0;
+    cur = key;
+    v.poster = SRC[key].poster;
+    v.src = SRC[key].mp4;
+    v.load();
+    if (t > 0){ v.addEventListener('loadedmetadata', function once(){ v.removeEventListener('loadedmetadata', once); try{ v.currentTime = Math.min(t, v.duration - 0.1); }catch(e){} }); }
+    start();
+  }
+  function start(){
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){ play.hidden = false; });
+  }
+  /* Fundo da página acompanha o vídeo (vinho no envelope, creme no cartão), então qualquer sobra de tela some. */
+  function tint(){
+    var w = SRC[cur].wine, t = v.currentTime;
+    body.classList.toggle('wine', t >= w[0] && t < w[1]);
+  }
+  v.addEventListener('timeupdate', tint);
+  v.addEventListener('ended', function(){ again.hidden = false; });
+  v.addEventListener('play', function(){ play.hidden = true; again.hidden = true; });
+
+  play.addEventListener('click', function(){ v.muted = false; setSound(); v.play(); });
+  again.addEventListener('click', function(){ v.currentTime = 0; v.play(); });
+  sound.addEventListener('click', function(){
+    v.muted = !v.muted; setSound();
+    if (v.muted === false && v.ended){ v.currentTime = 0; }
+    v.play();
+  });
+  function setSound(){
+    sound.querySelector('span').textContent = v.muted ? 'Ativar som' : 'Sem som';
+    sound.setAttribute('aria-label', v.muted ? 'Ativar som' : 'Desativar som');
+  }
+  if (mq.addEventListener) mq.addEventListener('change', pick); else mq.addListener(pick);
+  pick();
+})();
+</script>
+</body>
+</html>
